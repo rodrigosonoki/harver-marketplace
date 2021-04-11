@@ -1,7 +1,11 @@
 import { useRouter } from "next/router";
 import DefaultErrorPage from "next/error";
 
-import ProductInfo from "../../components/organisms/ProductInfo";
+import ProductForm from "../../components/ProductForm";
+import ProductImages from "../../components/ProductImages";
+import ProductData from "../../components/ProductData";
+
+import { Container, Content, Box, ProductBox } from "./styles";
 
 export default function Product({ products }) {
   const { isFallback } = useRouter();
@@ -15,11 +19,21 @@ export default function Product({ products }) {
   }
 
   return (
-    <div>
-      <p>{products.name}</p>
-      <img src={products.img} />
-      <ProductInfo />
-    </div>
+    <Container>
+      <Content>
+        <Box>
+          <ProductImages img={products.img} />
+          <ProductBox>
+            <ProductData
+              name={products.name}
+              price={products.price}
+              model={products.model}
+            />
+            <ProductForm />
+          </ProductBox>
+        </Box>
+      </Content>
+    </Container>
   );
 }
 

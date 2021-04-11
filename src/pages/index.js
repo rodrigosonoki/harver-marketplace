@@ -10,13 +10,15 @@ export default function Home({ products }) {
         <Section />
         <Cards>
           {products.map((product) => (
-            <ProductCard
-              name={product.name}
-              img={product.img}
-              price={formatPrice(product.price)}
-              key={product.id}
-              user={product.user}
-            />
+            <a href={`http://localhost:3000/${product.user}/${product.id}`}>
+              <ProductCard
+                name={product.name}
+                img={product.img[0]}
+                price={formatPrice(product.price)}
+                key={product.id}
+                user={product.user}
+              />
+            </a>
           ))}
         </Cards>
       </Container>
