@@ -1,5 +1,6 @@
-import CheckoutForm from "../../components/CheckoutForm";
 import Header from "../../components/Header";
+
+import CheckoutForm from "../../components/CheckoutForm";
 
 import { Container } from "./styles";
 

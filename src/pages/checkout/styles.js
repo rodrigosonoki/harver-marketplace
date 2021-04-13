@@ -7,3 +7,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const Content = styled.div`
+  display: flex;
+`;
+
+export const Data = styled.div``;

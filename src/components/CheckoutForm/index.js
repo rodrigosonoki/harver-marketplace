@@ -1,69 +1,103 @@
 import { useState } from "react";
-import { Container, FormField, ContactBox, AddressBox } from "./styles";
+
+import {
+  Container,
+  Content,
+  StyledLabel,
+  StyledInput,
+  InputBlock,
+  PaymentOption,
+  StyledPaymentInput,
+  CreditCardField,
+  RadioInput,
+  RadioInputLabel,
+  Button,
+} from "./styles";
+
+const Label = ({ labelText }) => {
+  return <StyledLabel>{labelText}</StyledLabel>;
+};
+
+const Input = ({ inputText }) => {
+  return <StyledInput placeholder={inputText} />;
+};
+
+const PaymentInput = ({ paymentInputText }) => {
+  return (
+    <StyledPaymentInput placeholder={paymentInputText}></StyledPaymentInput>
+  );
+};
 
 export default function CheckoutForm() {
-  /*   const [neighborhood, setNeighborhood] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
- */
+  const [isCreditCard, setIsCreditCard] = useState(true);
 
-  const [cep, setCep] = useState("");
-  const [address, setAddress] = useState("");
-
-  const searchCEP = async () => {
-    const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`);
-    const data = await response.json();
-    setAddress(data);
-  };
+  var buttonLabel = isCreditCard ? "Pagar" : "Gerar boleto";
 
   return (
-    <>
-      <Container>
-        <ContactBox>
-          <h1>Dados de contato</h1>
-          <FormField>
-            <input placeholder="Nome" />
-          </FormField>
-          <FormField>
-            <input placeholder="Celular" />
-          </FormField>
-          <FormField>
-            <input placeholder="CPF" />
-          </FormField>
-        </ContactBox>
-        <AddressBox>
-          <h1>Dados de entrega</h1>
-          <FormField>
-            <input
-              placeholder="CEP"
-              onChange={(e) => setCep(e.target.value)}
-              onBlur={searchCEP}
+    <Container>
+      <Content>
+        <Label labelText="Dados de contato" />
+        <InputBlock>
+          <Input inputText="Nome" />
+          <Input inputText="Celular" />
+          <Input inputText="CPF" />
+        </InputBlock>
+      </Content>
+
+      <Content>
+        <Label labelText="Dados de entrega" />
+        <InputBlock>
+          <Input inputText="CEP" />
+          <Input inputText="Rua" />
+          <div>
+            <Input inputText="Número" />
+            <Input inputText="Complemento" />
+          </div>
+          <Input inputText="Bairro" />
+          <Input inputText="Cidade" />
+          <Input inputText="Estado" />
+        </InputBlock>
+      </Content>
+
+      <Content>
+        <Label labelText="Dados de pagamento" />
+        <PaymentOption>
+          <RadioInputLabel>
+            <RadioInput
+              type="radio"
+              name="payment-method"
+              value="credit-card"
+              defaultChecked={true}
+              onClick={() => setIsCreditCard(true)}
             />
-          </FormField>
-          <FormField>
-            <input
-              placeholder="Rua/Avenida/Alameda"
-              defaultValue={address.street}
+            <span>Cartão de crédito</span>
+          </RadioInputLabel>
+          <CreditCardField>
+            <div>
+              <PaymentInput paymentInputText="Número do cartão" />
+            </div>
+            <div>
+              <PaymentInput paymentInputText="MM/AAAA" />
+            </div>
+            <div>
+              <PaymentInput paymentInputText="CVV" />
+            </div>
+          </CreditCardField>
+          <Input inputText="Nome do titular" />
+        </PaymentOption>
+        <PaymentOption>
+          <RadioInputLabel>
+            <RadioInput
+              type="radio"
+              name="payment-method"
+              value="boleto"
+              onClick={() => setIsCreditCard(false)}
             />
-          </FormField>
-          <FormField>
-            <input placeholder="Número" />
-          </FormField>
-          <FormField>
-            <input placeholder="Complemento" />
-          </FormField>
-          <FormField>
-            <input placeholder="Bairro" defaultValue={address.neighborhood} />
-          </FormField>
-          <FormField>
-            <input placeholder="Cidade" defaultValue={address.city} />
-          </FormField>
-          <FormField>
-            <input placeholder="Estado" defaultValue={address.state} />
-          </FormField>
-        </AddressBox>
-      </Container>
-    </>
+            <span>Boleto</span>
+          </RadioInputLabel>
+        </PaymentOption>
+      </Content>
+      <Button>{buttonLabel}</Button>
+    </Container>
   );
 }
