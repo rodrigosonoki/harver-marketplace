@@ -1,5 +1,6 @@
-import ProductCard from "../components/productCard";
-import { Container, Section, Cards } from "./styles";
+import Header from "../components/Header";
+import ProductCard from "../components/ProductCard";
+import { Container, Cards } from "./styles";
 
 import formatPrice from "../helpers/formatPrice";
 
@@ -7,7 +8,7 @@ export default function Home({ products }) {
   return (
     <>
       <Container>
-        <Section />
+        <Header />
         <Cards>
           {products.map((product) => (
             <a href={`http://localhost:3000/${product.user}/${product.id}`}>

@@ -30,6 +30,7 @@ const PaymentInput = ({ paymentInputText }) => {
 
 export default function CheckoutForm() {
   const [isCreditCard, setIsCreditCard] = useState(true);
+  const [paymentData, setPaymentData] = useState("");
 
   var buttonLabel = isCreditCard ? "Pagar" : "Gerar boleto";
 

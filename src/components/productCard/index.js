@@ -1,17 +1,23 @@
-import { StyledCard, TextArea, Title } from "./styles";
+import {
+  Container,
+  Content,
+  ImageContainer,
+  DescriptionContainer,
+} from "./styles";
 
 export default function ProductCard(props) {
   return (
-    <StyledCard>
-      {" "}
-      <img src={props.img} alt="t-shirt" />
-      <TextArea>
-        <Title>
+    <Container>
+      <Content>
+        <ImageContainer>
+          <img src={props.img} width={300} height={300} />
+        </ImageContainer>
+        <DescriptionContainer>
           <p>{props.name}</p>
-          <span>{props.user}</span>
-        </Title>
-        <p>{props.price}</p>
-      </TextArea>
-    </StyledCard>
+          <p>{props.user}</p>
+          <p>{props.price}</p>
+        </DescriptionContainer>
+      </Content>
+    </Container>
   );
 }

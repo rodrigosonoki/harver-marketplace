@@ -1,46 +1,24 @@
 import styled from "styled-components";
 
-export const StyledCard = styled.div`
-  width: 320px;
-  height: 400px;
-  background-color: #fff;
-  border-radius: 16px;
-  -webkit-box-shadow: 1px 1px 10px 6px #888; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow: 1px 1px 10px 6px #888; /* Firefox 3.5 - 3.6 */
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
+export const Container = styled.div``;
 
-  img {
-    height: 320px;
-    width: 320px;
-    border-radius: 16px 16px 0 0;
-  }
-`;
+export const Content = styled.div``;
 
-export const TextArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 8px 0 8px;
-  height: 80px;
+export const ImageContainer = styled.div``;
 
-  p {
+export const DescriptionContainer = styled.div`
+  p:first-child {
     font-weight: bold;
-    font-family: Montserrat;
+    font-size: 18px;
   }
-`;
 
-export const Title = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 200px;
-  justify-content: center;
+  p:nth-child(2) {
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
 
-  p {
-    margin: 0;
+  p:last-child {
+    font-weight: bold;
+    font-size: 14px;
   }
 `;

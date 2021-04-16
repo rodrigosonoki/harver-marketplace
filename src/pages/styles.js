@@ -13,7 +13,3 @@ export const Cards = styled.div`
   grid-gap: 24px;
   width: 1008px;
 `;
-
-export const Section = styled.div`
-  height: 240px;
-`;

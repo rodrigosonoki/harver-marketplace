@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import DefaultErrorPage from "next/error";
 
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import ProductForm from "../../components/ProductForm";
 import ProductImages from "../../components/ProductImages";
 import ProductData from "../../components/ProductData";
@@ -20,6 +22,7 @@ export default function Product({ products }) {
 
   return (
     <Container>
+      <Header />
       <Content>
         <Box>
           <ProductImages img={products.img} />
@@ -29,10 +32,11 @@ export default function Product({ products }) {
               price={products.price}
               model={products.model}
             />
-            <ProductForm />
+            <ProductForm productDescription={products.description} />
           </ProductBox>
         </Box>
       </Content>
+      <Footer />
     </Container>
   );
 }

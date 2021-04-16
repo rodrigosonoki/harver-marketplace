@@ -31,7 +31,7 @@ export const Container = styled.div`
     text-align: center;
     justify-content: center;
     border: none;
-    background-color: rgb(254, 81, 123);
+    background-color: #d93d3d;
     color: #fff;
     cursor: pointer;
     margin-top: 24px;
@@ -44,11 +44,54 @@ export const Content = styled.div`
 
 export const Inputs = styled.div`
   display: flex;
+  flex-direction: column;
   margin-top: 16px;
+
+  p {
+    color: tomato;
+  }
+
+  h1 {
+    margin-bottom: 8px;
+  }
 `;
 
-export const SizeInput = styled.div``;
+export const RadioInputBlock = styled.div`
+  display: flex;
+`;
+
+export const SizeInput = styled.div`
+  height: 80px;
+
+  label {
+    display: flex;
+    background-color: #fff;
+    height: 48px;
+    width: 48px;
+    font-size: 16px;
+    border: 1px solid #e2e2e2;
+    border-radius: 4px;
+    margin-right: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: #000;
+    color: #fff;
+  }
+
+  label:hover {
+    border: 1px solid #000;
+  }
+`;
 
 export const QtyInput = styled.div`
-  margin-left: 16px;
+  height: 80px;
 `;
