@@ -63,6 +63,10 @@ export const RadioInputBlock = styled.div`
 export const SizeInput = styled.div`
   height: 80px;
 
+  p {
+    margin-top: 4px;
+  }
+
   label {
     display: flex;
     background-color: #fff;
@@ -94,4 +98,8 @@ export const SizeInput = styled.div`
 
 export const QtyInput = styled.div`
   height: 80px;
+
+  p {
+    margin-top: 4px;
+  }
 `;

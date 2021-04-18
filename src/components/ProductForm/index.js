@@ -8,15 +8,22 @@ import {
   RadioInputBlock,
 } from "./styles";
 
+import { useContext } from "react";
+
+import CartContext from "../../contexts/cart";
+
 export default function ProductForm({ productDescription }) {
+  const [isOpen, setIsOpen, getCart] = useContext(CartContext);
   const [size, setSize] = useState("");
   const [qty, setQty] = useState(1);
   const [qtyError, setQtyError] = useState("");
   const [sizeError, setSizeError] = useState("");
 
-  const handleOrder = () => {
+  const handleOrder = async () => {
     if (size == "") setSizeError("Selecione um tamanho.");
     if (qty < 1) setQtyError("Selecione uma quantidade válida");
+    await getCart();
+    setIsOpen(true);
   };
 
   return (
@@ -36,7 +43,7 @@ export default function ProductForm({ productDescription }) {
                 value="P"
                 onClick={() => setSize("P")}
               />
-              <label for="size-s">P</label>
+              <label htmlFor="size-s">P</label>
 
               <input
                 id="size-m"
@@ -45,7 +52,7 @@ export default function ProductForm({ productDescription }) {
                 value="M"
                 onClick={() => setSize("M")}
               />
-              <label for="size-m">M</label>
+              <label htmlFor="size-m">M</label>
 
               <input
                 id="size-g"
@@ -54,7 +61,7 @@ export default function ProductForm({ productDescription }) {
                 value="G"
                 onClick={() => setSize("G")}
               />
-              <label for="size-g">G</label>
+              <label htmlFor="size-g">G</label>
 
               <input
                 id="size-gg"
@@ -63,7 +70,7 @@ export default function ProductForm({ productDescription }) {
                 value="GG"
                 onClick={() => setSize("GG")}
               />
-              <label for="size-gg">GG</label>
+              <label htmlFor="size-gg">GG</label>
             </RadioInputBlock>
             {sizeError && <p>{sizeError}</p>}
           </SizeInput>
@@ -81,9 +88,8 @@ export default function ProductForm({ productDescription }) {
           </QtyInput>
         </Inputs>
       </Content>
-      <a href="http://localhost:3000/checkout">
-        <button onClick={handleOrder}>Adicionar ao carrinho</button>
-      </a>
+
+      <button onClick={handleOrder}>Adicionar ao carrinho</button>
     </Container>
   );
 }

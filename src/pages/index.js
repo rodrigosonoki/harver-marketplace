@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
-import { Container, Cards } from "./styles";
+import { Container, Content, Cards } from "./styles";
 
 import formatPrice from "../helpers/formatPrice";
 
@@ -9,19 +9,21 @@ export default function Home({ products }) {
     <>
       <Container>
         <Header />
-        <Cards>
-          {products.map((product) => (
-            <a href={`http://localhost:3000/${product.user}/${product.id}`}>
-              <ProductCard
-                name={product.name}
-                img={product.img[0]}
-                price={formatPrice(product.price)}
-                key={product.id}
-                user={product.user}
-              />
-            </a>
-          ))}
-        </Cards>
+        <Content>
+          <Cards>
+            {products.map((product) => (
+              <a href={`http://localhost:3000/${product.user}/${product.id}`}>
+                <ProductCard
+                  name={product.name}
+                  img={product.img[0]}
+                  price={formatPrice(product.price)}
+                  key={product.id}
+                  user={product.user}
+                />
+              </a>
+            ))}
+          </Cards>
+        </Content>
       </Container>
     </>
   );

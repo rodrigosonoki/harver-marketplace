@@ -2,21 +2,24 @@
   font-family: "Poppins";
   font-style: regular;
   font-weight: 400;
-  src: local("Poppins"), url(/public/fonts/Poppins-Regular.ttf) format("ttf");
+  src: local("Poppins"),
+    url(/public/static/fonts/Poppins-Regular.ttf) format("ttf");
 }
 
 @font-face {
   font-family: "Poppins";
   font-style: light;
   font-weight: 300;
-  src: local("Poppins"), url(/public/fonts/Poppins-Light.ttf) format("ttf");
+  src: local("Poppins"),
+    url(/public/static/fonts/Poppins-Light.ttf) format("ttf");
 }
 
 @font-face {
   font-family: "Poppins";
   font-style: bold;
   font-weight: 700;
-  src: local("Poppins"), url(/public/fonts/Poppins-Bold.ttf) format("ttf");
+  src: local("Poppins"),
+    url(/public/static.fonts/Poppins-Bold.ttf) format("ttf");
 }
 
 * {

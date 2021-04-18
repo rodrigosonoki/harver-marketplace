@@ -1,15 +1,21 @@
 import { useRouter } from "next/router";
 import DefaultErrorPage from "next/error";
 
+import { useContext } from "react";
+
+import CartContext from "../../contexts/cart";
+
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ProductForm from "../../components/ProductForm";
 import ProductImages from "../../components/ProductImages";
 import ProductData from "../../components/ProductData";
+import CartModal from "../../components/CartModal";
 
 import { Container, Content, Box, ProductBox } from "./styles";
 
 export default function Product({ products }) {
+  const [isOpen, changeIsOpen] = useContext(CartContext);
   const { isFallback } = useRouter();
 
   if (isFallback) {
@@ -35,6 +41,7 @@ export default function Product({ products }) {
             <ProductForm productDescription={products.description} />
           </ProductBox>
         </Box>
+        <CartModal isOpen={isOpen} />
       </Content>
       <Footer />
     </Container>
