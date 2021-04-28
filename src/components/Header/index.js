@@ -25,7 +25,7 @@ export default function Header() {
           <Link href="/">
             <img
               src="https://www.harver.com.br/static/logo-917eb2010144d2a1cd0a2072b4d41ea3.png"
-              alt="brand-logo"
+              alt="harver-logo"
               height="48px"
             />
           </Link>
